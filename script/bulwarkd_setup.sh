@@ -1,19 +1,19 @@
 #!/bin/bash
 # Download latest node and install.
-bwklink=`curl -s https://api.github.com/repos/bulwark-crypto/bulwark/releases/latest | grep browser_download_url | grep linux64 | cut -d '"' -f 4`
-mkdir -p /tmp/bulwark
-cd /tmp/bulwark
-curl -Lo bulwark.tar.gz $bwklink
-tar -xzf bulwark.tar.gz
-sudo mv ./bin/* /usr/local/bin
+lytixlink=`curl -s https://api.github.com/repos/lytixchain/lytix/releases/latest | grep browser_download_url | grep linux64 | cut -d '"' -f 4`
+mkdir -p /tmp/lytix
+cd /tmp/lytix
+curl -Lo lytix.tar.gz $lytixlink
+tar -xzf lytix.tar.gz
+sudo mv ./* /usr/local
 cd
-rm -rf /tmp/bulwark
-mkdir ~/.bulwark
+rm -rf /tmp/lytix
+mkdir ~/.lytix
 
 # Setup configuration for node.
 rpcuser=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 13 ; echo '')
 rpcpassword=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32 ; echo '')
-cat >~/.bulwark/bulwark.conf <<EOL
+cat >~/.lytix/lytix.conf <<EOL
 rpcuser=$rpcuser
 rpcpassword=$rpcpassword
 daemon=1
@@ -21,4 +21,4 @@ txindex=1
 EOL
 
 # Start node.
-bulwarkd
+lytixd
