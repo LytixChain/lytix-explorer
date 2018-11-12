@@ -2,7 +2,7 @@ Lytix Explorer
 &middot;
 =====
 
-Simple cryptocurrency block explorer system.
+Simple cryptocurrency block explorer system. Born from bulwark explorer.
 
 ## Required
 This repo assumes `git`, `mongodb`, `node`, `yarn`, and are installed with configuration done.  Please adjust commands to your local environment. 
@@ -17,14 +17,14 @@ https://yarnpkg.com/lang/en/docs/install/
 
 It is also required to have the Bulwark daemon running in the background. It is recommended to set this up before beginning to set up the explorer so that it syncs by the time you need it.
 
-Our geniuses here at BulwarkCorp™ have put together a script to do this for you. Just run
+Here is a script to do this for you. Just run
 
-`bash script/bulwarkd_setup.sh`
+`bash script/lytixd_setup.sh`
 
 This will install the latest Bulwark wallet and create a rpc username/password before starting the daemon.
 
 ## Install
-`git clone https://github.com/bulwark-crypto/bulwark-explorer.git` - copy repo to local folder.
+`git clone https://github.com/LytixChain/lytix-explorer.git` - copy repo to local folder.
 
 `cd blockex` - change into project directory.
 
@@ -32,7 +32,7 @@ This will install the latest Bulwark wallet and create a rpc username/password b
 
 ## Configure
 #### BlockEx API Configuration
-`cp config.template.js config.js` - setup configuration using template.
+`cp config.template.js config.js` - setup configuration using template. Modify the host name and the port it listens on in the first section. Also, check the usernames/password for the mongo DB and the Lytix RPC daemon.
 
 #### Database Configuration
 `mongo` - connect using mongo client.
