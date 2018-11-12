@@ -33,13 +33,13 @@
 	}
 
 	tr:nth-child(even) {
-		color: $gray;
+		color: $gray-dark;
 
 		td, a, a:visited {
 			color: $gray;
 
 			&:hover {
-				color: $blue;
+				color: $gray;
 			}
 		}
 	}
@@ -51,13 +51,13 @@
 			color: $gray-dark;
 
 			&:hover {
-				color: $blue;
+				color: $gray;
 			}
 		}
 	}
 
 	th {
-		background-color: $blue;
+		background-color: $gray-dark;
 		color: $white;
 		font-size: 16px;
 		min-width: 100px;

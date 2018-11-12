@@ -33,7 +33,7 @@
 	}
 
 	&__section-sub-heading {
-		color: $gray;
+		color: $gray_dark;
 	}
 
 	&__call {
@@ -41,7 +41,7 @@
 		position: relative;
 
 		&:hover {
-			color: $blue;
+			color: $gray_dark;
 		}
 	}
 
@@ -64,7 +64,7 @@
 		}
 
 		&:hover {
-			color: $gray;
+			color: $gray_dark;
 		}
 	}
 

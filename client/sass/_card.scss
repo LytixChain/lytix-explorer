@@ -112,7 +112,7 @@
 	}
 
 	&--market &__info-source {
-		color: $gray;
+		color: $gray_dark;
 		white-space: nowrap;
 	}
 
@@ -137,7 +137,7 @@
 
 	&--graph &__data-sub {
 		font-size: .8em;
-		color: $gray;
+		color: $gray_dark;
 	}
 
 }

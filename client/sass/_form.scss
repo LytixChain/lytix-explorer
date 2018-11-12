@@ -1,7 +1,7 @@
 
 button {
-	background-color: $blue;
-	border: 1px solid $blue;
+	background-color: $gray_dark;
+	border: 1px solid $gray_dark;
 	border-radius: 3px;
 	color: $white;
 	cursor: pointer;
@@ -10,7 +10,7 @@ button {
 
 	&:focus,
 	&:hover {
-		background-color: darken($blue, 10%);
+		background-color: darken($gray, 10%);
 	}
 }
 
@@ -32,7 +32,7 @@ input, select {
 
 	&:focus,
 	&:hover {
-		border-color: $blue;
+		border-color: $gray_dark;
 		color: $black;
 	}
 }

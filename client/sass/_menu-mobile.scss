@@ -43,7 +43,7 @@
 	&__item {
 		display: flex;
 		align-items: center;
-		border-bottom: 1px solid $gray;
+		border-bottom: 1px solid $gray_dark;
 		line-height: 1;
 		margin: 0 auto;
 		padding: 1em;
@@ -52,7 +52,7 @@
 		width: 95%;
 
 		&:hover {
-			color: $blue;
+			color: $gray_dark;
 			text-decoration: none;
 		}
 
