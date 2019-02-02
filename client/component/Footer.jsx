@@ -27,8 +27,9 @@ class Footer extends Component {
         <div className="footer__block">
           <img className="footer__logo" src="/img/footerlogo.svg" />
           <span className="footer__legal">
-            <div>Copyright &copy; 2018 <a href="http://lyticxchain.org">LytixChain Foundation</a></div>
-            <div>Site design / Logo &copy; 2018 <a href="https://bulwarkcrypto.com/">LytixChain Foundation</a></div>
+           <div>Site design and code originate from <a href="https://github.com/bulwark-crypto/bulwark-explorer">Bulwark Crypto Explorer</a></div>
+             <div><a href="https://bulwarkcrypto.com/">Bulwark CryptoCoin Project</a></div>
+              <div>Many thanks for such a great tool!</div>
           </span>
         </div>
         <div className="footer__block">
