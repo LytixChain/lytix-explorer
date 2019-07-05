@@ -15,6 +15,8 @@ const Coin = mongoose.model('Coin', new mongoose.Schema({
   diff: { required: true, type: Number },
   mnsOff: { required: true, type: Number },
   mnsOn: { required: true, type: Number },
+  maxsOff: { required: true, type: Number },
+  maxsOn: { required: true, type: Number },
   netHash: { required: true, type: Number },
   peers: { required: true, type: Number },
   status: { required: true, type: String },
