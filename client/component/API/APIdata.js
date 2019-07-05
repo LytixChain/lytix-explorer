@@ -49,6 +49,26 @@ const APIdata = [
           path: '/api/masternode/average'
         },
         {
+          name: 'getMaxnodes',
+          info: 'Returns maxnode information.',
+          path: '/api/maxnode'
+        },
+        {
+          name: 'getMaxnodeByAddress',
+          info: 'Returns maxnode information by Wallet Address.',
+          path: '/api/maxnode/bJAUCVr24X84c9k6QVuSvdjbuC69S7zMeG'
+        },
+        {
+          name: 'getMaxnodeCount',
+          info: 'Returns maxnodes enabled and total counts.',
+          path: '/api/maxnodecount'
+        },
+        {
+          name: 'getMaxnodeAverage',
+          info: 'Returns the average payment for a maxnode vs 24 hours.',
+          path: '/api/maxnode/average'
+        },
+        {
           name: 'getPeer',
           info: 'Returns peer information.',
           path: '/api/peer'

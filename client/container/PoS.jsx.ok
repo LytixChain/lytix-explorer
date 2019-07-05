@@ -36,7 +36,6 @@ class PoS extends Component {
       this.setState({
         mn: 0.0,
         maxn: 0.0,
-        mns: 'None',
         maxs: 'None',
         pos: 0.0
       }, this.getAmount);
@@ -60,7 +59,6 @@ class PoS extends Component {
 
     if (this.state.mns !== 'None') {
       mn = this.state.mns * blockchain.mncoins;
-	
       pos = amount - mn;
     }
 
@@ -69,7 +67,7 @@ class PoS extends Component {
       pos = amount - maxn;
     }
 
-    return { mn, maxn, pos };
+    return { maxn, pos };
   };
 
   getRewardHours = (pos) => {
@@ -127,7 +125,7 @@ class PoS extends Component {
     const subsidy = blockchain.getSubsidy(this.props.coin.blocks + 1);
     const mnSubsidy = blockchain.getMNSubsidy(this.props.coin.blocks + 1);
     const maxSubsidy = blockchain.getMAXSubsidy(this.props.coin.blocks + 1);
-    const posSubsidy = subsidy - (mnSubsidy + maxSubsidy) - (subsidy * 0.05);
+    const posSubsidy = subsidy - (mnSubsidy + maxSubsidy);
 
     let pos = this.state.amount;
     let mn = 0.0;
@@ -165,7 +163,7 @@ class PoS extends Component {
     }
     x.mnHours = 24.0;
 
-    if (x.maxHours !== 24.0 && x.maxHours > 0) {
+    if (x.maxHours !== 24.0 && x.maxnHours > 0) {
       x.maxSubsidy = (24.0 / x.maxHours) * x.maxSubsidy;
     } else if (x.maxHours <= 0) {
       x.maxSubsidy = 0.0;

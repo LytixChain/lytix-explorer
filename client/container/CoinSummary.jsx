@@ -10,6 +10,7 @@ import Icon from '../component/Icon';
 
 import CardMarket from '../component/Card/CardMarket';
 import CardMasternodeSummary from '../component/Card/CardMasternodeSummary';
+import CardMaxnodeSummary from '../component/Card/CardMaxnodeSummary';
 import CardPoS from '../component/Card/CardPoS';
 import CardPoSCalc from '../component/Card/CardPoSCalc';
 import CardStatus from '../component/Card/CardStatus';
@@ -47,6 +48,7 @@ class CoinSummary extends Component {
                 <CardStatus
                   avgBlockTime={ coin.avgBlockTime }
                   avgMNTime={ coin.avgMNTime }
+                  avgMAXTime={ coin.avgMAXTime }
                   blocks={ height }
                   peers={ coin.peers }
                   status={ coin.status } />
@@ -55,7 +57,7 @@ class CoinSummary extends Component {
                 <CardPoSCalc />
               </div>
             </div>
-            <div className="row">
+           <div className="row">
               <div className="col-md-12 col-lg-6">
                 <CardMarket
                   btc={ coin.btc }
@@ -69,6 +71,13 @@ class CoinSummary extends Component {
                   online={ coin.mnsOn }
                   xAxis={ this.props.coins.map(c => c.createdAt) }
                   yAxis={ this.props.coins.map(c => c.mnsOn ? c.mnsOn : 0.0) } />
+              </div>
+	    <div className="col-md-12 col-lg-6">
+                <CardMaxnodeSummary
+                  offline={ coin.maxsOff }
+                  online={ coin.maxsOn }
+                  xAxis={ this.props.coins.map(c => c.createdAt) }
+                  yAxis={ this.props.coins.map(c => c.maxsOn ? c.maxsOn : 0.0) } />
               </div>
             </div>
           </div>

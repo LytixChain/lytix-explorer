@@ -41,13 +41,13 @@ export default class CardStatus extends Component {
       <Card className="card--market" title="Market">
         <p className="card__data-main bariol">
           <CountUp
-            decimals={ 2 }
+            decimals={ 5 }
             duration={ 1 }
             end={ this.props.usd }
             prefix={ 'LYTX $' }
             start={ 0 } />
         </p>
-        <p className="card__data-sub">{ this.props.btc } BTC</p>
+        <p className="card__data-sub">{ (this.props.btc).toFixed(10) } BTC</p>
         <div className="card__info row">
           <div className="col-sm-12 col-md-6 col-lg-4">
             <p>
@@ -59,7 +59,7 @@ export default class CardStatus extends Component {
               </span>
               <span>In { this.props.xAxis.length * 5 } minutes</span>
             </p>
-            <p className="card__info-source">Data from CoinMarketCap</p>
+            <p className="card__info-source">Data from Crex24</p>
           </div>
           <div className="col-sm-12 col-md-6 col-lg-8">
             <GraphLine

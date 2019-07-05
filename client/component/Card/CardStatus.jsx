@@ -11,6 +11,7 @@ export default class CardStatus extends Component {
   static defaultProps = {
     avgBlockTime: 90,
     avgMNTime: 24,
+    avgMAXTime: 24,
     blocks: 0,
     peers: 0,
     status: 'Offline'
@@ -19,6 +20,7 @@ export default class CardStatus extends Component {
   static propTypes = {
     avgBlockTime: PropTypes.number.isRequired,
     avgMNTime: PropTypes.number.isRequired,
+    avgMAXTime: PropTypes.number.isRequired,
     blocks: PropTypes.number.isRequired,
     peers: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired
@@ -65,6 +67,10 @@ export default class CardStatus extends Component {
         <div className="card__row">
           <span className="card__label">Avg. MN Payment:</span>
           <span className="card__result">{ this.props.avgMNTime.toFixed(2) } hours</span>
+	</div>
+        <div className="card__row">
+          <span className="card__label">Avg. MAX Payment:</span>
+          <span className="card__result">{ this.props.avgMAXTime.toFixed(2) } hours</span>
         </div>
       </Card>
       </div>

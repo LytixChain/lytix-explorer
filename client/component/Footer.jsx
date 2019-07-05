@@ -25,11 +25,10 @@ class Footer extends Component {
     return (
       <div className="footer">
         <div className="footer__block">
-          <img className="footer__logo" src="/img/footerlogo.svg" />
+          <img className="footer__logo" src="/img/logo.png" />
           <span className="footer__legal">
-           <div>Site design and code originate from <a href="https://github.com/bulwark-crypto/bulwark-explorer">Bulwark Crypto Explorer</a></div>
-             <div><a href="https://bulwarkcrypto.com/">Bulwark CryptoCoin Project</a></div>
-              <div>Many thanks for such a great tool!</div>
+            <div>Copyright &copy; 2018 <a href="http://lyticxchain.org">Bulwark Cryptocurrency</a></div>
+            <div>Site modifications / Logo &copy; 2018-2019 <a href="https://www.lytixchain.org/">LytixChain Foundation</a></div>
           </span>
         </div>
         <div className="footer__block">
@@ -58,7 +57,7 @@ class Footer extends Component {
               <a href="https://bitcointalk.org/index.php?topic=5066344.msg47735919#msg47735919" target="_blank">
                 <Icon name="bitcoin" className="fab footer__social-media-icon" />
               </a>
-              <a href="https://discord.gg/zDFrBSF" target="_blank">
+              <a href="https://discord.gg/CZfZ7Ex" target="_blank">
                 <Icon name="discord" className="fab footer__social-media-icon" />
               </a>
               <a href="https://github.com/LytixChain/lytix" target="_blank">

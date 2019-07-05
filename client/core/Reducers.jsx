@@ -12,7 +12,7 @@ import {
 // The initial state of the coin object.
 const coinInit = {
   blocks: 0, btc: 0, cap: 0, createdAt: 0,
-  diff: 0, mnsOff: 0, mnsOn: 0, netHash: 0,
+  diff: 0, mnsOff: 0, mnsOn: 0, maxsOff: 0, maxsOn: 0, netHash: 0,
   peers: 0, status: 'Offline', supply: 0, usd: 0
 };
 /**

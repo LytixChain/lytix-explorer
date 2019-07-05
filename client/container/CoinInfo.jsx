@@ -8,6 +8,7 @@ import React from 'react';
 
 import CardEarnings from '../component/Card/CardEarnings';
 import CardExchanges from '../component/Card/CardExchanges';
+import CardMaxEarnings from '../component/Card/CardMaxEarnings';
 import CardLinks from '../component/Card/CardLinks';
 import CardROI from '../component/Card/CardROI';
 import HorizontalRule from '../component/HorizontalRule';
@@ -43,9 +44,6 @@ class CoinInfo extends Component {
         <HorizontalRule title="Coin Info" />
         <div className="row">
           <div className="col-md-12 col-lg-8">
-            <div>
-              <img className="img-fluid" src="/img/largelogo.svg" />
-            </div>
             <div className="row">
               <div className="col-sm-12 col-md-3">
                 <CardLinks />
@@ -53,6 +51,7 @@ class CoinInfo extends Component {
               </div>
               <div className="col-sm-12 col-md-9">
                 <CardEarnings coin={ this.props.coin } />
+                <CardMaxEarnings coin={ this.props.coin } />
               </div>
             </div>
           </div>

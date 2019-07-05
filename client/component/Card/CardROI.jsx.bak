@@ -13,7 +13,6 @@ const CardROI = ({ coin, supply }) => {
   const maxs = coin.maxsOff + coin.maxsOn;
   const subsidy = blockchain.getMNSubsidy(coin.blocks, mns, coin.supply);
   const roi = blockchain.getROI(subsidy, coin.mnsOn);
-  const maxroi = blockchain.getMAXROI(subsidy, coin.maxsOn);
 
   return (
     <Card>
@@ -30,26 +29,9 @@ const CardROI = ({ coin, supply }) => {
           { numeral(roi).format('0,0.0000') }%
         </div>
         <div className="h5">
-          Estimated Masternode ROI
+          Estimated ROI
         </div>
       </div>
-       <div className="mb-3">
-        <div className="h3">
-          { coin.maxsOn } / { maxs }
-        </div>
-        <div className="h5">
-          Active/Total Maxnodes
-        </div>
-      </div>
-      <div className="mb-3">
-        <div className="h3">
-          { numeral(maxroi).format('0,0.0000') }%
-        </div>
-        <div className="h5">
-          Estimated Maxnode ROI
-        </div>
-      </div>
-
       <div className="mb-3">
         <div className="h3">
           { numeral(supply ? supply.t : 0.0).format('0,0.0000') } LYTX
@@ -84,7 +66,7 @@ const CardROI = ({ coin, supply }) => {
       </div>
       <div className="mb-3">
         <div className="h3">
-          { numeral((mns * mncoins) + (maxs * maxcoins)).format('0,0.0000') } LYTX
+          { numeral(mns * mncoins).format('0,0.0000') } LYTX
         </div>
         <div className="h5">
           Coins Locked
@@ -96,14 +78,6 @@ const CardROI = ({ coin, supply }) => {
         </div>
         <div className="h5">
           Masternode Worth
-        </div>
-      </div>
-      <div className="mb-3">
-        <div className="h3">
-          { numeral(maxcoins * coin.btc).format('0,0.0000') } BTC / { numeral(maxcoins * coin.usd).format('$0,0.00') }
-        </div>
-        <div className="h5">
-          Maxnode Worth
         </div>
       </div>
     </Card>

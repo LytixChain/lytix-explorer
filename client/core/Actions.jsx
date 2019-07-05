@@ -78,6 +78,12 @@ export const getCoinsWeek = () => {
   });
 };
 
+export const getCoinsMonth = () => {
+  return new promise((resolve, reject) => {
+    return getFromWorker('coins-month', resolve, reject);
+  });
+};
+
 export const getIsBlock = (query) => {
   return new promise((resolve, reject) => {
     return getFromWorker('is-block', resolve, reject, query);
@@ -89,6 +95,13 @@ export const getMNs = (query) => {
     return getFromWorker('mns', resolve, reject, query);
   });
 };
+
+export const getMAXs = (query) => {
+  return new promise((resolve, reject) => {
+    return getFromWorker('maxs', resolve, reject, query);
+  });
+};
+
 
 export const getPeers = () => {
   return new promise((resolve, reject) => {
@@ -173,6 +186,12 @@ export const getTXsWeek = () => {
   });
 };
 
+export const getTXsMonth = () => {
+  return new promise((resolve, reject) => {
+    return getFromWorker('txs-month', resolve, reject);
+  });
+};
+
 export const setTXs = (dispatch, txs) => {
   dispatch({ payload: txs, type: TXS });
 };
@@ -190,14 +209,17 @@ export default {
   getBlock,
   getCoinHistory,
   getCoinsWeek,
+  getCoinsMonth,
   getIsBlock,
   getMNs,
+  getMAXs,
   getPeers,
   getSupply,
   getTop100,
   getTX,
   getTXLatest,
   getTXs,
+  getTXsMonth,
   getTXsWeek,
   setTXs,
   setWatch,

@@ -61,6 +61,7 @@ class Statistics extends Component {
     // Setup graph data objects.
     const hashes = new Map();
     const mns = new Map();
+    const maxs = new Map();
     const prices = new Map();
     this.state.coins.forEach((c, idx) => {
       const k = moment(c.createdAt).format('MMM DD');
@@ -77,6 +78,13 @@ class Statistics extends Component {
         mns.set(k, c.mnsOn);
       }
 
+	if (maxs.has(k)) {
+        maxs.set(k, maxs.get(k) + c.maxsOn);
+      } else {
+        maxs.set(k, c.maxsOn);
+      }
+
+
       if (prices.has(k)) {
         prices.set(k, prices.get(k) + c.usd);
       } else {
@@ -85,7 +93,7 @@ class Statistics extends Component {
     });
 
     // Generate averages for each key in each map.
-    const l = (24 * 60) / 5; // How many 5 min intervals in a day.
+    const l = (24 * 60); // How many 5 min intervals in a day.
     let avgHash, avgMN, avgPrice = 0.0;
     let hashLabel = 'H/s';
     hashes.forEach((v, k) => {
@@ -121,7 +129,7 @@ class Statistics extends Component {
     return (
       <div className="animated fadeInUp">
         <HorizontalRule title="Statistics" />
-        { Array.from(hashes.keys()).slice(1, -1).length <= 6 && <Notification /> }
+        { Array.from(hashes.keys()).slice(1, -1).length <= 8 && <Notification /> }
         <div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
@@ -151,9 +159,9 @@ class Statistics extends Component {
           </div>
           <div className="row">
             <div className="col-md-12 col-lg-6">
-              <h3>Bulwark Price USD</h3>
-              <h4>{ numeral(this.props.coin.usd).format('$0,0.00') } { day }</h4>
-              <h5>{ numeral(this.props.coin.btc).format('0.00000000') } BTC</h5>
+              <h3>Lytix Price USD</h3>
+              <h4>{ numeral(this.props.coin.usd).format('$0,0.0000') } { day }</h4>
+	      <h5>{ numeral(this.props.coin.btc).format('0.000000000000') } BTC</h5>
               <div>
                 <GraphLineFull
                   color="#1991eb"
@@ -172,6 +180,18 @@ class Statistics extends Component {
                   data={ Array.from(mns.values()).slice(1, -1) }
                   height="420px"
                   labels={ Array.from(mns.keys()).slice(1, -1) } />
+              </div>
+            </div>
+	    <div className="col-md-12 col-lg-6">
+              <h3>Maxnodes Online Last 7 Days</h3>
+              <h4>{ this.props.coin.maxsOn } { day }</h4>
+              <h5>Seen: { this.props.coin.maxsOn + this.props.coin.maxsOff }</h5>
+              <div>
+                <GraphLineFull
+                  color="#1991eb"
+                  data={ Array.from(maxs.values()).slice(1, -1) }
+                  height="420px"
+                  labels={ Array.from(maxs.keys()).slice(1, -1) } />
               </div>
             </div>
           </div>
