@@ -10,15 +10,17 @@ const Coin = require('../model/coin');
 
 /**
  * Get the coin related information including things
- * like price coinmarketcap.com data.
+ * like price crex24.com data.
  */
 async function syncCoin() {
   const date = moment().utc().startOf('minute').toDate();
-  // Setup the coinmarketcap.com api url.
-  const url = `${ config.coinMarketCap.api }${ config.coinMarketCap.ticker }`;
+  // Setup the crex24.com api url.
+  const url = `${ config.crex24.api }`;
+  const btcurl = `${ config.crex24btc.api }`;
 
   const info = await rpc.call('getinfo');
   const masternodes = await rpc.call('getmasternodecount');
+  const maxnodes = await rpc.call('getmaxnodecount');
   const nethashps = await rpc.call('getnetworkhashps');
 
   let market = await fetch(url);
@@ -26,23 +28,38 @@ async function syncCoin() {
     market = market.length ? market[0] : {};
   }
 
+  let cbtcusd = await fetch(btcurl);
+  if (Array.isArray(cbtcusd)) {
+    cbtcusd = cbtcusd.length ? cbtcusd[0] : {};
+  }
+
+  let btcusdprc = cbtcusd.last;
+  let btcprc = (market.last).toFixed(12);
+  let usdprc = (btcusdprc * btcprc);
+
   const coin = new Coin({
-    cap: market.market_cap_usd,
+    cap: market.volumeInUsd,
     createdAt: date,
     blocks: info.blocks,
-    btc: market.price_btc,
+    btc: (market.last).toFixed(12),
     diff: info.difficulty,
     mnsOff: masternodes.total - masternodes.stable,
     mnsOn: masternodes.stable,
+    maxsOff: maxnodes.total - maxnodes.stable,
+    maxsOn: maxnodes.stable,
     netHash: nethashps,
     peers: info.connections,
     status: 'Online',
-    supply: market.available_supply, // TODO: change to actual count from db.
-    usd: market.price_usd
+    supply: info.moneysupply,
+    usd: usdprc
   });
+
+//process.stdout.write("BTC" + btcprc + " " + "USD" + usdprc);
+
 
   await coin.save();
 }
+
 
 /**
  * Handle locking.

@@ -70,6 +70,8 @@ async function update() {
 
     let clean = true; // Always clear for now.
     let dbHeight = block && block.height ? block.height : 1;
+    //if stuck block then increment 1 up from the first value in the db - output that shows db block and real block
+    //let dbHeight = 277228; 
     let rpcHeight = info.blocks;
 
     // If heights provided then use them instead.

@@ -6,6 +6,7 @@ const locker = require('../lib/locker');
 const Block = require('../model/block');
 const Coin = require('../model/coin');
 const Masternode = require('../model/masternode');
+const Maxnode = require('../model/maxnode');
 const Peer = require('../model/peer');
 const Rich = require('../model/rich');
 const TX = require('../model/tx');
@@ -18,6 +19,7 @@ async function clearDatabase() {
   await Block.remove({});
   await Coin.remove({});
   await Masternode.remove({});
+  await Maxnode.remove({});
   await Peer.remove({});
   await Rich.remove({});
   await TX.remove({});
@@ -34,6 +36,7 @@ async function update() {
     locker.lock('block');
     locker.lock('coin');
     locker.lock('masternode');
+    locker.lock('maxnode');
     locker.lock('peer');
     locker.lock('rich');
     locker.lock('tx');
@@ -47,6 +50,7 @@ async function update() {
       locker.unlock('block');
       locker.unlock('coin');
       locker.unlock('masternode');
+      locker.unlock('maxnode');
       locker.unlock('peer');
       locker.unlock('rich');
       locker.unlock('tx');
